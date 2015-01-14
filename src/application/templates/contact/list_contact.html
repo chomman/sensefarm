@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	
+		<div class="pageTitle">
+			<h1>문의사항</h1>
+		</div>
+
+		<div class="subContent">
+		
+			<div class="SRV000">
+
+				<div class="group gp1" id="gp1">
+					<h2>문의사항 목록</h2>
+					<div class="text">
+						<h3></h3><br/>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>제목</th>
+                                    <th>이름</th>
+                                    <th>전화번호</th>
+                                    <th>핸드폰번호</th>
+                                    <th>문의날짜</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for contact in contacts %}
+                                {% set contact_id = contact.key.id() %}
+                                <tr>
+                                    <td>{{ contact_id }}</td>
+                                    <td>{{ contact.contact_title }}</td>
+                                    <td>{{ contact.contact_name }}</td>
+                                    <td>{{ contact.contact_phone }}</td>
+                                    <td>{{ contact.contact_mobile }}</td>
+                                    <td class="nowrap">{{ contact.timestamp.strftime('%b %d, %Y %I:%M %p') }}</td>
+                                    <td>
+                                        <form method="post" action="{{ url_for('delete_contact', contact_id=contact_id) }}">
+                                            <button class="btn">삭제</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr><td colspan="7">문의내용이 없습니다.</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+
+					</div>
+				</div>
+
+			</div>
+		
+		</div>		
+
+{% endblock content %}

@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <title>Sensefarm</title>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/static/stylesheets/front.css"/>
+    <!--[if lt IE 9]><link rel="stylesheet" type="text/css" href="/static/stylesheets/front_ie8.css"/><![endif]-->
+    <script src="/static/javascripts/jquery-1.9.1.js"></script>
+    <script src="/static/javascripts/jquery-migrate-1.0.0.js"></script>
+    <script src="/static/javascripts/jquery.easing.1.3.js"></script>
+    <!-- <script src="/static/javascripts/jquery.event.drag-1.5.min.js"></script> -->
+    <script src="/static/javascripts/jquery.touchSlider.js"></script>
+    <script src="/static/javascripts/jquery.sortable.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){ $(window).resize(function(){ metricRespack($(window).width()); }); metricRespack($(window).width()); function metricRespack($w){ var $cx = 0; var $vx = ($w > 1047) ? 6 : ($w > 782) ? 5 : ($w > 442) ? 4 : 2 ; $('.workList li').each(function($idx){ if( $idx%2  == 1 ){ 	if( Number($cx%$vx) == Number($vx-1)  ){ $(this).css({display:'none'}); }else{ $(this).css({display:'block'}); }; $cx++; }; }); }; });
+    </script>
+</head>
+<body>
+<span class="wSize"></span>
+<div id="wrap">
+
+        <div id="header">
+        <h1><a href="/"><span class="blind">Sensefarm</span></a></h1>
+        <div class="gnbMenu">
+            <ul>
+                <li class="fir active"><a href="/company">회사소개</a></li>
+                <li><a href="/service">서비스 소개</a></li>
+                <li><a href="/process">절차/가격</a></li>
+                <li class="end"><a href="/contact">문의/의뢰</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="snbMenu">
+    	{% if category == 'company' %}
+        <a href="/company/ceo" class="active">CEO</a>
+        <a href="/company/motive" class="active">설립동기</a>
+        <a href="/company/value" class="active">경영이념과 핵심가치</a>
+        <a href="/company/ci" class="active">CI 소개</a>
+        {% elif category == 'service' %}
+        <a href="/service/naming" class="active">네이밍</a>
+        <a href="/service/marketing" class="active">마케팅</a>
+        <a href="/service/design" class="active">디자인</a>
+        {% elif category == 'process' %}        
+        <a href="/process/step" class="active">절차</a>
+        <a href="/process/price" class="active">가격</a>
+        {% endif %}
+    </div>
+
+    <div id="container">
+    	
+    	{% block content %}{# main content area #}{% endblock %}
+
+    </div>
+
+</div>
+
+<div id="footer">
+    <div class="inner">
+        <address>© 2014 Sensefarm<br /><span class="br">|</span>(주)센스팜<span>|</span>대표자명 : 정희우<span>|</span>사업자등록번호 : 105-81-99879</address>
+        <div class="goSns">
+            <a href="#header" class="ic_top"><span class="blind">top</span></a>
+            <a href="http://blog.naver.com/Sensefarm" target="_blank" class="ic_blog" title="새창"><span class="blind">blog</span></a>
+            <a href="https://www.facebook.com/SensefarmBBN" target="_blank" class="ic_facebook" title="새창"><span class="blind">facebook</span></a>
+        </div>
+    </div>
+    <div class="btnAppOnlySub">
+        <a href="#applForm" class="openApp">프로젝트 의뢰</a>
+        <a href="http://Sensefarm.com/2013_creative_works.pdf" class="downCp" target="_blank">회사소개서 다운로드</a>
+    </div>
+    <div class="applForm" id="applForm">
+        <div class="inner">
+            <div class="appformWrite">
+                <form class="appForm">
+                    <legend><span class="blind">프로젝트 의뢰 폼</span></legend>
+                    <div class="wrArea">
+                        <fieldset class="atypeAll">
+                            <fieldset class="atype-8"><input type="text" id="app011" name="APP011" placeholder="의뢰영역" value="의뢰영역" /></fieldset>
+                            <fieldset class="atype-5"><input type="text" id="app008" name="APP008" placeholder="회사명" value="회사명" /></fieldset>
+                            <fieldset class="atype-6"><input type="text" id="app009" name="APP009" placeholder="부서명" value="부서명" /></fieldset>
+                            <fieldset class="atype-1"><input type="text" id="app001" name="APP001" placeholder="성명" value="성명" /></fieldset>
+                            <fieldset class="atype-7"><input type="text" id="app010" name="APP010" placeholder="직함" value="직함" /></fieldset>
+                            <fieldset class="atype-2"><input type="text" id="app002" name="APP002" placeholder="연락번호" value="연락번호" /></fieldset>
+                            <fieldset class="atype-3"><input type="text" id="app007" name="APP007" placeholder="핸드폰" value="핸드폰" /></fieldset>
+                            <fieldset class="atype-4"><input type="text" id="app003" name="APP003" placeholder="이메일" value="이메일" /></fieldset></fieldset>
+                        <fieldset class="btype-1"><textarea name="APP004" id="app004"  placeholder="의뢰상세내용" value="의뢰상세내용"></textarea></fieldset>
+                    </div>
+                    <div class="submitArea"><input type="submit" value="프로젝트 의뢰 접수" /></div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('.appForm input[type="text"], textarea').focus(function(){
+            if( $(this).val() == '' ){
+                $(this).val( $(this).attr('placeholder') );
+            }else{
+                $(this).val( '');
+            }
+        }).blur(function(){
+            if( $(this).val() == '' || $(this).val() == $(this).attr('placeholder')  ){
+                $(this).val( $(this).attr('placeholder') );
+            }
+        });
+
+        $('.openApp').click(function(){
+            $('.applForm').show();
+            $(document).scrollTop( $(document).height() );
+            return false;
+        });
+        $('.appForm').submit(function(){
+            var $param = $(this).serialize();
+            //console.log( $param );
+            //return false;
+            var $action = 'APP000.html';
+            var $x = 0;
+            /*
+             $('.appForm input[type="text"], textarea').each(function(){
+             if( $(this).attr('placeholder') == $(this).val() ){
+             $x = 1;
+             alert('누락 항목이 있습니다.');
+             $(this).focus();
+             return false;
+             }
+             });
+             */
+
+            if( $('.appForm input[name="APP001"]').val() == '이름' || $('.appForm input[name="APP001"]').val() == '' || $('.appForm input[name="APP001"]').val().length < 2 ){
+                alert('이름은 필수 항목 입니다.');
+                $('.appForm input[name="APP001"]').focus();
+                $x = 1;
+                return false;
+            }
+            if( $('.appForm input[name="APP002"]').val() == '전화번호' || $('.appForm input[name="APP002"]').val() == '' || $('.appForm input[name="APP002"]').val().length < 2 ){
+                alert('전화번호는 필수 항목 입니다.');
+                $('.appForm input[name="APP002"]').focus();
+                $x = 1;
+                return false;
+            }
+            if( $x == 0 ){
+                $.post($action, $param, function(res){
+                    //console.log( res );
+                    alert( '프로젝트 의뢰가 정상적으로 접수되었습니다.' );
+                    $('.applForm').hide();
+
+                });
+            }
+            return false;
+        });
+    });
+</script>
+
+</body>
+</html>
