@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	
+		<div class="pageTitle">
+			<h1>문의</h1>
+		</div>
+
+		<div class="subContent">
+		
+			<div class="SRV000">
+
+				<div class="group gp1" id="gp1">
+					<h2>문의사항 목록</h2>
+					<div class="text">
+						<h3></h3><br/>
+						
+				        <form id="new-contact-form" class="well"
+				            action="{{ url_for('list_contacts') }}" method="post" accept-charset="utf-8">
+				            <fieldset>
+				                {{ form.hidden_tag() }}
+				                <div class="control-group">
+				                    <div class="control-label">{{ form.contact_title.label }}</div>
+				                    <div class="controls">
+				                        {{ form.contact_title|safe }}
+				                        {% if form.contact_title.errors %}
+				                        <ul class="errors">
+				                            {% for error in form.contact_title.errors %}
+				                            <li>{{ error }}</li>
+				                            {% endfor %}
+				                        </ul>
+				                        {% endif %}
+				                    </div>
+				                </div>
+				                <div>&nbsp;</div>
+				                <div class="control-group">
+				                    <div class="control-label">{{ form.contact_description.label }}</div>
+				                    <div class="controls">
+				                        {{ form.contact_description|safe }}
+				                        {% if form.contact_description.errors %}
+				                        <ul class="errors">
+				                            {% for error in form.contact_description.errors %}
+				                            <li>{{ error }}</li>
+				                            {% endfor %}
+				                        </ul>
+				                        {% endif %}
+				                    </div>
+				                </div>
+				                <div>&nbsp;</div>
+				                <div class="control-group">
+				                    <div class="controls">
+				                        <input class="btn btn-primary" type="submit" value="문의하기"/>
+				                        <button class="btn" data-dismiss="modal">취소</button>
+				                    </div>
+				                </div>
+				            </fieldset>
+				        </form>
+
+					</div>
+				</div>
+
+			</div>
+		
+		</div>		
+
+{% endblock content %}

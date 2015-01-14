@@ -47,7 +47,10 @@ app.add_url_rule('/service/<pagename>', view_func=page.service)
 app.add_url_rule('/process/', view_func=page.process)
 app.add_url_rule('/process/<pagename>', view_func=page.process)
 
-app.add_url_rule('/contact/', view_func=contact.list_contact)
+app.add_url_rule('/contact/', view_func=contact.new_contacts, methods=['GET'])
+app.add_url_rule('/contact/list', view_func=contact.list_contacts)
+app.add_url_rule('/contact/new', view_func=contact.new_contacts)
+app.add_url_rule('/contact/<int:contact_id>/edit', 'contact_example', view_func=contact.edit_contact, methods=['GET', 'POST'])
 
 
 
